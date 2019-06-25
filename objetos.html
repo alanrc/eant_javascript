@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Obejetos - JavaScript</title>
+</head>
+<body>
+    <script>
+        // Variables ---------------
+        let nombre = 'Cafe torrado'
+        let stock = 600
+        let precio = 85.65
+        let disponible = false
+        document.write(`el producto ${nombre} vale ARS ${precio} c/u`) 
+
+        // Array ---------------
+        let producto = ['jugo de naranja', 450, 15.45, true]
+        document.write(`el producto ${producto[0]} vale ARS ${producto[2]} c/u `)
+
+        // Objetos ---------------
+        let otroProducto = { // <--- Objeto literal ---------------
+            nombre : 'Agua like', 
+            stock : 33,
+            precio :  30.5,
+            disponible : false
+        }
+        document.write(`el producto ${otroProducto.nombre} vale ARS ${otroProducto.precio} c/u `)
+        
+        let tercerProducto = new Object() // <--- Objeto Diferido ---------------
+        tercerProducto.nombre = 'Alfajor'
+        tercerProducto.stock = 150
+        tercerProducto.precio = 65.3
+        tercerProducto.disponible = false
+        document.write(`el producto ${tercerProducto.nombre} vale ARS ${tercerProducto.precio} c/u `)
+        
+        // --------------------------------------------------------
+        const crearProducto = function (n, s, p, d) {
+            let elProducto = new Object() // <--- Objeto Diferido ---------------
+            elProducto.nombre = n
+            elProducto.stock = s
+            elProducto.precio = p
+            elProducto.disponible = d    
+            return elProducto
+        }
+
+        // --------------------------------------------------------
+        let ultimoProducto = crearProducto('té rojo', 43, 74.5, true)
+        document.write(`el producto ${ultimoProducto.nombre} vale ARS ${ultimoProducto.precio} c/u `)
+        // un objeto se difine   ===> x lo que es = sus PROPIEDADES
+        //                        ===> x lo que hace = sus METODOS
+
+    </script>
+</body>
+</html>
