@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>JavaScript - Avanzado</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>JavaScript - Avanzado</title>
 </head>
 <body>
-    <h1>Evoluciones de ES5 a ES6</h1>
-    <h2>la vredad al descubierto</h2>
+	<h1>Evoluciones de ES5 a ES6</h1>
+	<h2>la vredad al descubierto</h2>
 
 
-    <script>
-        // ES5
-        //var nombre = prompt('Digite...')  
+	<script>
+		// ES5
+		//var nombre = prompt('Digite...')  
 
-        // window.nombre = window.prompt('Digite...')  
+		// window.nombre = window.prompt('Digite...')  
 
-        // ES6        
-        //let apellido = window.prompt('ingrese su apellido')
+		// ES6        
+		//let apellido = window.prompt('ingrese su apellido')
 
-        // ES5
-        //function saludar() {....}
-        //window.function saludar() {...}
+		// ES5
+		//function saludar() {....}
+		//window.function saludar() {...}
 
-        // ES6: 
-        //const saludar = function() {...}
-        //let saludar = function() {....}
-        //   Arrow Functions
-        const saludar = () => {
-            // ES5
-            // window.console.log("hola" + nombre + "" + apellido)
-            // ES6
-            console.log(`hello  ${nombre} ${apellido}`)
-        }
+		// ES6: 
+		//const saludar = function() {...}
+		//let saludar = function() {....}
+		//   Arrow Functions
+		const saludar = () => {
+			// ES5
+			// window.console.log("hola" + nombre + "" + apellido)
+			// ES6
+			console.log(`hello  ${nombre} ${apellido}`)
+		}
 
-        window.document.querySelector('h1').onclick = saludar
-        window.document.querySelector('h2').onclick = function() {
-            
-            console.log(this)
-            this.style.color = '#000FFF'
+		window.document.querySelector('h1').onclick = saludar
+		window.document.querySelector('h2').onclick = function() {
+			
+			console.log(this)
+			this.style.color = '#000FFF'
 
-            // hjdhjsdh
-        }
+			// hjdhjsdh
+		}
 
-    </script>
+	</script>
 
 
 </body>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Obejetos - JavaScript</title>
+</head>
+<body>
+	<h1>Objetos en JavaScript</h1>
+	<p>Un objeto es </p>
+
+
+	<script src="productoClass.js"></script>
+    <script>
+
+		// --------------------------------------------------------
+        const crearProducto = function (n, s, p, d) {
+			//Propiedades(que es...)
+			let elProducto = new Object() // <--- Objeto Diferido ---------------
+			elProducto.nombre = n
+			elProducto.stock = s
+			elProducto.precio = p
+			elProducto.disponible = d
+
+			//Metodos (que hace.....)
+
+			elProducto.Mostrar = function() {
+				// document.write(`<p>El producto <strong>${elProducto.nombre}</strong> vale ARS ${elProducto.precio} c/u</p> `)
+				let ficha = document.createElement("ul")
+				
+				let conteinido =`
+					<li>Nombre: ${elProducto.nombre}</li>
+					<li>Precio: ARS${elProducto.precio}</li>
+					<li>Stock: ${elProducto.stock} unid.</li>
+					<li>Disponible: ${elProducto.disponible ? 'SI' : 'NO'} </li>
+					`
+				ficha.innerHTML = conteinido
+				document.body.appendChild(ficha)
+			}
+
+			elProducto.Descuento = function(des) {
+				let descuento = (elProducto.precio * des) / 100 // Obtengo el descuento 
+				elProducto.precio -= descuento // <-- Aplico el descuento
+
+				elProducto.precio = Math.ceil(elProducto.precio)// <--- Redondeo el precio
+			}
+			
+			
+			return elProducto
+			
+		}
+		
+        // Variables ---------------
+		let nombre = 'Cafe torrado'
+		let stock = 600
+		let precio = 85.65
+		let disponible = false
+		// document.write(`el producto ${nombre} vale ARS ${precio} c/u`) 
+
+        // Objetos ---------------
+        let otroProducto = { // <--- Objeto literal ---------------
+            nombre : 'Agua like', 
+            stock : 33,
+            precio :  30.5,
+            disponible : false
+        }
+        // document.write(`el producto ${otroProducto.nombre} vale ARS ${otroProducto.precio} c/u `)
+        
+        let tercerProducto = new Object() // <--- Objeto Diferido ---------------
+        tercerProducto.nombre = 'Alfajor'
+        tercerProducto.stock = 150
+        tercerProducto.precio = 65.3
+        tercerProducto.disponible = false
+        
+        // --------------------------------------------------------
+        let ultimoProducto = crearProducto('té rojo', 43, 74.5, true)
+
+		// mostrarProducto(otroProducto.nombre, otroProducto.precio)
+		// mostrarProducto(tercerProducto.nombre, tercerProducto.precio)
+		// mostrarProducto(ultimoProducto.nombre, ultimoProducto.precio)
+
+		ultimoProducto.Descuento(30)
+		ultimoProducto.Mostrar()
+	</script>
+	
+</body>
+</html>
