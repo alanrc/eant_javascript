@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Objetos</title>
+</head>
+<body>
+	<h1>De object a Objetos - La venganza de AJAX</h1>
+
+	<script>
+		const ajax = new XMLHttpRequest()
+		ajax.open("GET", "productos.json")
+		ajax.onload = function () {
+			if (this.status == 200) {
+
+				let productos = JSON.parse(this.response)
+				console.log(productos)
+				
+			}
+		}
+	</script>
+</body>
+</html>

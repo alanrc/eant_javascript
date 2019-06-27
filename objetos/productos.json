@@ -1,0 +1,39 @@
+
+[
+	{
+		"nombre" : "Cafe torrado",
+		"stock" : 388,
+		"precio" : 85.6,
+		"disponible" : false
+	},
+	{
+		"nombre" : "Te de tilo",
+		"stock" : 200,
+		"precio" : 55.69,
+		"disponible" : false
+	},
+	{
+		"nombre" : "Agua gasificada(baja en sodio)",
+		"stock" : 100,
+		"precio" : 175.25,
+		"disponible" : true
+	},
+	{
+		"nombre" : "Alfajor de Maicena",
+		"stock" : 250,
+		"precio" : 80.25,
+		"disponible" : false
+	},
+	{
+		"nombre" : "Submarino",
+		"stock" : 260,
+		"precio" : 67.75,
+		"disponible" : true
+	},
+	{
+		"nombre" : "Lemon Pie",
+		"stock" : 500,
+		"precio" : 115.25,
+		"disponible" : true
+	}
+]
