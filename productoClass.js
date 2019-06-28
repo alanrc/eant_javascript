@@ -1,3 +1,5 @@
+alert('joooaooaoa')
+
 class Producto {
 	// 1) Constructor
 	constructor(n, p, s, d) {
