@@ -23,7 +23,10 @@ class Producto {
 	precioBruto() {
 		return (precio / 1.21).toFixed(2)
 	}
-	// 3) Metodos de Clase
+	// 3) Metodos de Clase (o Metodos Estaticos)
+	static parse() {
+		console.log('Ahora deberia convertir object en Producto');
+	}
 }
 
 /////////////////////////////////////////////////
