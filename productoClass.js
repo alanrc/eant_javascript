@@ -1,5 +1,3 @@
-alert('joooaooaoa')
-
 class Producto {
 	// 1) Constructor
 	constructor(n, p, s, d) {
@@ -26,8 +24,23 @@ class Producto {
 		return (precio / 1.21).toFixed(2)
 	}
 	// 3) Metodos de Clase (o Metodos Estaticos)
-	static parse() {
-		console.log('Ahora deberia convertir object en Producto');
+	static parse(data) {
+		console.log('Ahora deberia convertir object en Producto')
+		data = JSON.parse(data)
+
+		if (data instanceof Array) {//<--- Hay muchos Object
+			// let productos = new Array()
+			let productos = []
+			data.forEach(item => {
+				let producto = new Producto(item.nombre, item.stock, item.precio, item.disponible)
+				productos.push(producto)
+			})
+			return productos
+		} else if(data instanceof Object) {//<--- Hay un solo Object
+
+		} else {//<--- No hay ningun Object (No hay nada...)
+
+		}
 	}
 }
 
