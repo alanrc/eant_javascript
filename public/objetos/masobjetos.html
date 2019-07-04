@@ -13,12 +13,16 @@
 
 	<script>
 		const ajax = new XMLHttpRequest()
-		ajax.open("GET", "productos.json")
+		ajax.open("GET", "https://api.myjson.com/bins/dcg2p")
 		ajax.onload = function () {
 			if (this.status == 200) {//<--- Respuesta exitosa
 
 				let productos = Producto.parse(this.response)
-				console.log(productos)
+				// console.log(productos)
+
+				productos.forEach((producto) => {
+					producto.Mostrar()
+				});
 				
 			}
 		}
