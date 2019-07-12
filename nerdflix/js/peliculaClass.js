@@ -1,5 +1,6 @@
 class Pelicula {
-	constructor(t, e, d, p, tr) {
+	constructor(i, t, e, d, p, tr) {
+		this.ID = i,
 		this.Titulo = t
 		this.Estreno = e
 		this.Descripcion = d
@@ -30,15 +31,23 @@ class Pelicula {
 		data = JSON.parse(data)
 
 		if (data instanceof Array) {
+
+			/*// --------          VIEJA FORMA          -------
 			let peliculas = []
 			data.forEach(item => {
-				let pelicula =  new Pelicula(item.Titulo, item.Descripcion, item.Estreno, item.Poster, item.Trailer)
+				let pelicula =  new Pelicula(item.idPelicula, item.Titulo, item.Descripcion, item.Estreno, item.Poster, item.Trailer)
 				peliculas.push(pelicula)
 			})
-			return peliculas
+			return peliculas */
+
+			// --------          NUEVA FORMA          -------
+			return data.map(item => 
+				new Pelicula(item.idPelicula, item.Titulo, item.Descripcion, item.Estreno, item.Poster, item.Trailer)
+			)
+
+
 		} else if (data instanceof Object){
-			let pelicula = new Pelicula(data.Titulo, data.Descripcion, data.Estreno, data.Poster, data.Trailer)
-			return pelicula
+			return new Pelicula(idPelicula, data.Titulo, data.Descripcion, data.Estreno, data.Poster, data.Trailer)
 		} else {
 			return null
 		}
@@ -46,9 +55,9 @@ class Pelicula {
 }
 
 //  ----------------    Ajax   ------------------------
+/*
 const ajax = new XMLHttpRequest()
 ajax.open("GET", "https://api.myjson.com/bins/fiuhw")
-ajax.send()
 ajax.onload = function () {
 	if (this.status == 200) {
 		
@@ -59,7 +68,9 @@ ajax.onload = function () {
 		});
 	}
 }
+ajax.send()
 
+*/
 
 //    ----------------    Eventos   ----------------
 
