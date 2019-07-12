@@ -66,7 +66,36 @@
 			otraPelicula.Mostrar()
 
 				*/
-			
+					
+				
+				// *****************************   PROMESAS EN JS   ***********************************************
+				let compromiso = new Promise(function(ok, error) {  //<--- Accion principal asincronica....
+					if (!localStorage.getItem("_peliculas")) { // Si NO hay un localStorage....
+
+						// ----------------------  Inicio de AJAX    ----------------------
+						let ajax = new XMLHttpRequest()
+						ajax.open("GET", "https://api.myjson.com/bins/fiuhw")
+						ajax.onload = function() {
+							if(this.status == 200) { //<--- Respuesta satisfactoria..
+								// Hacer magia
+								localStorage.setItem("_peliculas", this.response)
+								ok(this.response) //<--- Cumplir la promesa en el metodo .then()
+							}
+						}
+						ajax.send()
+						// ----------------------  Fin de AJAX    -------------------------
+					
+				} else { // Si EFECTIVAMENTE hay un localStorage....
+					ok(localStorage.getItem("_peliculas"))
+				}
+			})
+			compromiso.then(function(data) { //<--- Accion que prometo hacer (Si sale bien..)
+				let marvel = Pelicula.parse(data)
+				marvel.forEach(peli => peli.Mostrar(){
+				});
+			})
+
+			// compromiso.catch(????) //<--- Accion que prometo hacer (Si hace mal..)
 
 		</script>
 
