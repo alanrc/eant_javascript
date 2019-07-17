@@ -17,12 +17,35 @@ class Pelicula {
 			elemento.querySelector('h4').innerText = this.Titulo
 			elemento.querySelector('p').innerText = this.Descripcion
 			elemento.querySelector('img').src = this.Poster
+		
+		// 3) Generar el comportamiento de "Reproductor"
+		elemento.querySelector("a").onclick = (e) => {
+			// Desactivar el hipervinculo
+			e.preventDefault()
+			// El this es la Pelicula
+			// console.log(this.Trailer)
+			
+			let reproductor = document.querySelector('#playMovie')
+			console.log(reproductor);
+			// reproductor.querySelector('#titulo').innerHTML = this.Titulo + "(" + this.Descripcion +")"
+			reproductor.querySelector('#titulo').innerHTML = `${this.Titulo}  (${this.Descripcion})`
+			reproductor.querySelector('iframe').src = this.Trailer
+			reproductor.querySelector('#descripcion').innerHTML = this.Estreno
+			reproductor.querySelector('#imagen').src = this.Poster
 
-		// 3) Desocultar el elemento clonado
+			window.scroll({
+				behavior : "smooth",
+				top: reproductor.offsetTop
+			})
+			
+		}
+
+
+		// 4) Desocultar el elemento clonado
 		elemento.classList.remove('hide')
 
 
-		// 4) Anexar el elemento en el contenedor  (PADRE)
+		// 5) Anexar el elemento en el contenedor  (PADRE)
 		document.querySelector('#peliculas').appendChild(elemento)	
 		// console.log(elemento)
 	}
@@ -71,13 +94,3 @@ ajax.onload = function () {
 ajax.send()
 
 */
-
-//    ----------------    Eventos   ----------------
-
-document.querySelector('').addEventListener('click', function() {
-	reproducirVideo()
-})
-
-function reproducirVideo() {
-	console.log('diste click...')
-}
