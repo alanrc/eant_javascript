@@ -19,6 +19,9 @@
 				
 			}
 		}
+		ajax.onerror = function() {
+			console.error('ERROR: La API no esta disponible');
+		}
 		ajax.send()
 	</script>
 </body>
