@@ -9,20 +9,25 @@
 <body>
 	
 	<script>
-		let ajax = new XMLHttpRequest()
-		ajax.open("GET", "https://api.myjson.com/bins/fiuhw")
-		ajax.onload = function() {
-			if (this.status == 200) {
 
-				let peliculas = JSON.parse(this.response)
-				console.table(peliculas)
-				
-			}
-		}
-		ajax.onerror = function() {
-			console.error('ERROR: La API no esta disponible');
-		}
-		ajax.send()
+
+		/* -----   AJAX desde ECMAScript 6   ----- */
+
+		// Capa 1: Obtencion de los datos
+		fetch("https://api.myjson.com/bins/fiuhw").then(function(data) {
+			// capa 2: Conversion de los datos
+			return data.json()
+		}).then(function(peliculas) {
+			// Capa 3: Uso de los datos
+			console.table(peliculas)
+			return peliculas
+		}).then(function(datos) {
+			datos.forEach(dato => {
+				console.log(dato)
+			})
+		})
+		/* -----   END  AJAX desde ECMAScript 6   ----- */
+
 	</script>
 </body>
 </html>
