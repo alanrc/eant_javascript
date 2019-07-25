@@ -51,23 +51,22 @@
 				</div>
 			</div>
 		</div>
-
-
+	
+		<script src="https://apis.google.com/js/api:client.js"></script>
 		<script src="js/peliculaClass.js"></script>
 
 		<script>
-			/*
-			let unaPelicula = new Pelicula('Avengers: Endgame rerelease',  '22-07-2019', 'After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to undo Thanos', 'http://t0.gstatic.com/images?q=tbn:ANd9GcSiC3mSrAdG2_Tkuz5CbCm2TA-wYikac3dOPVlzb5jCk1gqsHOD','https://youtu.be/oKStYmMgNRA')
+			////////////////////  LOGIN CON GOOGLE   ////////////////////////
+			gapi.load('auth2', function() {
+				// var auth2 = gapi.auth2.init()
+				window.auth2 = gapi.auth2.init({
+					client_id: ' 282502540582-shbmeom8o85gcakp66sm08vvpmr0i63t.apps.googleusercontent.com ',
+					cookiepolicy: 'single_host_origin'
+				})
+			})
+			////////////////////  FIN LOGIN CON GOOGLE   ////////////////////////
 
-			let otraPelicula = new Pelicula('Spider-Man 3', '16-05-2007', 'Peter Parker sufre una terrible transformación cuando su traje de Hombre Araña se vuelve negro y libera una personalidad oscura y vengativa.', 'https://movieposters2.com/images/1093021-b.jpg', 'https://youtu.be/IK2IOPm9FaU' )
 
-
-			unaPelicula.Mostrar()
-			otraPelicula.Mostrar()
-
-				*/
-					
-				
 			// *****************************   PROMESAS EN JS   ***********************************************
 			let compromiso = new Promise(function(ok, error) {  //<--- Accion principal asincronica....
 				if (!localStorage.getItem("_peliculas")) { // Si NO hay un localStorage....

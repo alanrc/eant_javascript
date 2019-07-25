@@ -22,28 +22,31 @@ class Pelicula {
 		elemento.querySelector("a").onclick = (e) => {
 			// Desactivar el hipervinculo
 			e.preventDefault()
-			// El this es la Pelicula
-			// console.log(this.Trailer)
-			
-			let reproductor = document.querySelector('#playMovie')
-			console.log(reproductor);
-			// reproductor.querySelector('#titulo').innerHTML = this.Titulo + "(" + this.Descripcion +")"
-			reproductor.querySelector('#titulo').innerHTML = `${this.Titulo}  (${this.Descripcion})`
-			reproductor.querySelector('iframe').src = this.Trailer
-			reproductor.querySelector('#descripcion').innerHTML = this.Estreno
-			reproductor.querySelector('#imagen').src = this.Poster
 
-			window.scroll({
-				behavior : "smooth",
-				top: reproductor.offsetTop
-			})
-			
+			if ( window.auth2.currentUser.get().isSignedIn() ) {
+				
+				let reproductor = document.querySelector('#playMovie')
+				
+				reproductor.querySelector('#titulo').innerHTML = `${this.Titulo}  (${this.Descripcion})`
+				reproductor.querySelector('iframe').src = this.Trailer
+				reproductor.querySelector('#descripcion').innerHTML = this.Estreno
+				reproductor.querySelector('#imagen').src = this.Poster
+	
+				window.scroll({
+					behavior : "smooth",
+					top: reproductor.offsetTop
+				})
+			} else {
+				// logueate .....gil...
+				auth2.signIn().then(function() {
+					let usuario = auth2.currentUser.get().getBasicProfile()
+					alert(`Bienvenido  ${usuario.getGivenName()}`)
+				})
+			}
 		}
-
 
 		// 4) Desocultar el elemento clonado
 		elemento.classList.remove('hide')
-
 
 		// 5) Anexar el elemento en el contenedor  (PADRE)
 		document.querySelector('#peliculas').appendChild(elemento)	
@@ -54,21 +57,10 @@ class Pelicula {
 		data = JSON.parse(data)
 
 		if (data instanceof Array) {
-
-			/*// --------          VIEJA FORMA          -------
-			let peliculas = []
-			data.forEach(item => {
-				let pelicula =  new Pelicula(item.idPelicula, item.Titulo, item.Descripcion, item.Estreno, item.Poster, item.Trailer)
-				peliculas.push(pelicula)
-			})
-			return peliculas */
-
 			// --------          NUEVA FORMA          -------
 			return data.map(item => 
 				new Pelicula(item.idPelicula, item.Titulo, item.Descripcion, item.Estreno, item.Poster, item.Trailer)
 			)
-
-
 		} else if (data instanceof Object){
 			return new Pelicula(idPelicula, data.Titulo, data.Descripcion, data.Estreno, data.Poster, data.Trailer)
 		} else {
@@ -76,21 +68,3 @@ class Pelicula {
 		}
 	}
 }
-
-//  ----------------    Ajax   ------------------------
-/*
-const ajax = new XMLHttpRequest()
-ajax.open("GET", "https://api.myjson.com/bins/fiuhw")
-ajax.onload = function () {
-	if (this.status == 200) {
-		
-		let peliculas = Pelicula.parse(this.response)
-		
-		peliculas.forEach((pelicula) => {
-			pelicula.Mostrar()						
-		});
-	}
-}
-ajax.send()
-
-*/
