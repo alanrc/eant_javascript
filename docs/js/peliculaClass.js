@@ -40,7 +40,14 @@ class Pelicula {
 				// logueate .....gil...
 				auth2.signIn().then(function() {
 					let usuario = auth2.currentUser.get().getBasicProfile()
-					alert(`Bienvenido  ${usuario.getGivenName()}`)
+					// alert(`Bienvenido  ${usuario.getGivenName()}`)
+					document.querySelector("#user-data").classList.remove("hide")
+					
+					document.querySelector("#user-data strong").innerText = usuario.getGivenName()
+					document.querySelector("#userdata button").onclick = function() {
+						auth2.signOut()
+						document.querySelector("#user-data").classList.add("hide")
+					}
 				})
 			}
 		}
